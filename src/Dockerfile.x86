@@ -73,6 +73,8 @@ RUN sudo apt-get install -y wget
 RUN git clone https://github.com/SharpAI/Smart-Park-with-YOLO-V3 && \
     cd Smart-Park-with-YOLO-V3 && \
     wget --no-check-certificate https://pjreddie.com/media/files/yolov3.weights
-# Set the default command to python3
+ADD ./requirements.txt /app/requirements.txt
+RUN pip install -r ./requirements.txt
+ADD detector.py /app/Smart-Park-with-YOLO-V3/
 CMD ["/app/docker-novnc/entrypoint.sh"]
 EXPOSE 8080
