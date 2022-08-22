@@ -75,14 +75,19 @@ services:
     container_name: "detector"
     depends_on:
       - "detector_plugin"
-    command: sh -c "while [ 1 ] > /dev/null; do sleep 1; done"
+    #command: sh -c "while [ 1 ] > /dev/null; do sleep 1; done"
     logging:
       driver: json-file
       options:
         max-size: "10m"
         max-file: "10"
-    image: python:3.8
+    #image: python:3.8
+    #image: huggingface/transformers-pytorch-cpu:4.18.0
+    image: shareai/pytorch_opencv:x86
     restart: always
+    ports: 
+      - 5901:5901
+      - 8000:8080
     env_file:
       - ~/.sharpai/token.env
     environment:
@@ -97,6 +102,5 @@ services:
       - ~/.sharpai/device_id:/dev/ro_serialno
       - ~/.sharpai/group_id:/data/usr/com.deep.workai/cache/groupid.txt
       - ./images:/opt/nvr/detector/images
-      - ./src:/opt/detector
 networks:
   main:
