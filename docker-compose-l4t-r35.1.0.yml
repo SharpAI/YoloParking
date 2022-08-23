@@ -82,15 +82,22 @@ services:
         max-size: "10m"
         max-file: "10"
     image: shareai/yolo_parking:l4t_r35.1.0
+    build:
+      context: ./src
+      dockerfile: Dockerfile.l4t_r35.1.0
     restart: always
+    runtime: nvidia
     ports: 
       - 5901:5901
       - 8000:8080
     env_file:
       - ~/.sharpai/token.env
+    privileged: true
     environment:
       TIMEZONE_OFFSET: ${TIMEZONE_OFFSET}
       IMAGE_DIR: "/opt/nvr/detector/images"
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
     networks:
       main:
         aliases:

@@ -128,7 +128,8 @@ def worker():
     while True:        
         item = q.get()
         print(f'Working on {item}')
-        frame = cv2.imread(item)
+        img = cv2.imread(item)
+        frame = cv2.resize(img, (800,600)), interpolation = cv2.INTER_AREA)
 
         img, orig_im, dim = prep_image(frame, inp_dim)
         im_dim = torch.FloatTensor(dim).repeat(1,2)                        
