@@ -1,4 +1,6 @@
-# YoloParking
+# Use AI to keep an eye on your own parking lot to prevent intrusion
 
-Repo to port [Smart-Park-with-YOLO-V3](https://github.com/SharpAI/Smart-Park-with-YOLO-V3) to SharpAI-Hub.
+# [Install with SharpAI-Hub](https://github.com/SharpAI/DeepCamera#install-sharpai-on-jetson-nanoxavier-agxwindowslinuxmacos)
+
+##  [Source Code](https://github.com/SharpAI/Smart-Park-with-YOLO-V3)
 
